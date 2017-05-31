@@ -1,9 +1,13 @@
+'use strict';
+
 const fs = require('fs');
 const path = require('path');
 const expect = require('chai').expect;
 const cssToStylus = require('../');
 
-function test (inputData = []) {
+function test (inputData) {
+	if (!inputData) inputData = [];
+
 	inputData.forEach((data, idx) => {
 		it(`test #${idx + 1}`, function () {
 			expect(cssToStylus(data[0], data[2] || {})).to.be.equal(data[1]);
